@@ -3,12 +3,10 @@ class House:
     def __init__(self):
         self.numberOfFloors = 0
 
-
     def setNewNumberOfFloors(self, floors):
-        numberOfFloors = self.numberOfFloors + floors
-        print('Новый этаж равен: ', numberOfFloors)
+        self.numberOfFloors = floors
+        print('Новый этаж равен: ', self.numberOfFloors)
 
 
 H = House()
-
-H.setNewNumberOfFloors(5)
+H.setNewNumberOfFloors(4)
