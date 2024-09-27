@@ -1,18 +1,18 @@
 import time
 
 class User:
-    def __init__(self, nickname, password, age):
-        self.nickname = str(nickname)
-        self.password = hash(str(password))
-        self.age = int(age)
+    def __init__(self, nickname: str, password: hash(str), age: int):
+        self.nickname: str = nickname
+        self.password: hash(str) = password
+        self.age: int = age
 
 
 class Video:
     def __init__(self, title, duration, time_now=0, adult_mode=False):
-        self.title = str(title)
-        self.duration = int(duration)
-        self.time_now = int(time_now)
-        self.adult_mode = bool(adult_mode)
+        self.title: str = title
+        self.duration: int = duration
+        self.time_now: int = time_now
+        self.adult_mode: bool = adult_mode
 
 
 class UrTube:
@@ -60,11 +60,13 @@ class UrTube:
         return print(search_video)
 
     def watch_video(self, cur_title):
+        if self.current_user == None:
+            print("Войдите в аккаунт чтобы смотреть видео")
+            return None
+
         for video in self.videos:
             if video.title == cur_title:
-                if self.current_user == None:
-                    print("Войдите в аккаунт чтобы смотреть видео")
-                elif self.current_user.age < 18:
+                if self.current_user.age < 18:
                     print("Вам нет 18 лет, пожалуйста покиньте страницу")
                 else:
                     for i in range(0, video.duration):
@@ -72,9 +74,6 @@ class UrTube:
                         time.sleep(1)
                         print(i)
                     print("Конец видео")
-
-
-
 
 
 
@@ -98,7 +97,6 @@ ur.watch_video('Для чего девушкам парень программи
 #
 # # Проверка входа в другой аккаунт
 ur.register('vasya_pupkin', 'F8098FM8fjm9jmi', 55)
-print(ur.current_user.nickname)
 #
 # # Попытка воспроизведения несуществующего видео
 ur.watch_video('Лучший язык программирования 2024 года!')
